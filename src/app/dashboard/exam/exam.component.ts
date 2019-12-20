@@ -42,11 +42,11 @@ export class ExamComponent implements OnInit {
   constructor() { }
   ngOnInit() {
   }
-  onSelectionChange(index, event) {
+  onSelectionChange(questionIndex, optionIndex, event) {
     if (event.target.checked) {
-      this.questionArray[index].userAns = index;
+      this.questionArray[questionIndex].userAns = optionIndex;
     } else {
-      this.questionArray[index].userAns = '';
+      this.questionArray[questionIndex].userAns = '';
     }
   }
   onSubmit() {

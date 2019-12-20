@@ -1,0 +1,8 @@
+form{
+  max-width: 400px;
+  margin: 100px auto 20px;
+  background-color: #f1f1f1;
+  box-shadow: 0 0 15px #ccc;
+  border: 1px solid #eeeeee;
+  padding: 40px;
+}

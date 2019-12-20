@@ -7,9 +7,18 @@
       <input appInputref class="form-control" formControlName="password" type="password" />
     </app-custom-erro>
     <app-custom-erro [label]="'Login As'">
-      Student <input appInputref class="form-control" formControlName="loginAs" type="radio" value="student"/>
-      Admin <input appInputref class="form-control" formControlName="loginAs" type="radio" value="Admin" />
+      <div class="form-check form-check-inline">
+        <label class="form-check-label pr-2" for="inlineCheckbox1">Student</label>
+        <input appInputref class="form-check-input" formControlName="loginAs" type="radio" id="inlineCheckbox1" value="student">
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label pr-2" for="inlineCheckbox2">Admin</label>
+        <input appInputref class="form-check-input" formControlName="loginAs" type="radio" id="inlineCheckbox2" value="option1">
+      </div>
+<!--      Student <input appInputref class="form-control" formControlName="loginAs" type="radio" value="student"/>-->
+<!--      Admin <input appInputref class="form-control" formControlName="loginAs" type="radio" value="Admin" />-->
     </app-custom-erro>
+
     <div>
       <button [disabled]="detailForm.invalid" type="submit" class="btn btn-primary">Submit</button>
     </div>

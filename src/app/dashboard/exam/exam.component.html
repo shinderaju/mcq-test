@@ -1,22 +1,22 @@
 <div class="container">
-  <div *ngFor="let question of questionArray; let questionIndex = index">
-    <div>
-      <span>{{question.text}}</span>
-      <li>
-        <span *ngFor="let option of question.options;let optionIndex = index">
-          <label class="font-weight-normal" [attr.for]="option" [ngClass]="{'correct' : (optionIndex == question.ans && question.ans == question.userAns && mode=='result'), 'wrong': (optionIndex == question.userAns && optionIndex != question.ans && mode=='result')}">
-              <input id="{{option}}" type="radio" (click)="onSelectionChange(questionIndex, $event);" /> {{option}}
+  <ul>
+      <li class="mb-4" *ngFor="let question of questionArray; let questionIndex = index">
+        <h4 class="font-weight-bold">{{( questionIndex + 1) + ". " + question.text}}</h4>
+        <p>
+          <label class="font-weight-normal mr-4" *ngFor="let option of question.options;let optionIndex = index"
+                 [attr.for]="option"
+                 [ngClass]="{'text-success' : (optionIndex == question.ans && mode=='result'), 'text-danger': (optionIndex == question.userAns && optionIndex != question.ans && mode=='result')}">
+              <input id="question{{questionIndex}}{{option}}" name="question{{questionIndex}}" type="radio" (click)="onSelectionChange(questionIndex, optionIndex, $event);" /> {{option}}
           </label>
-        </span>
+        </p>
       </li>
-    </div>
-  </div>
+  </ul>
   <div *ngIf="mode!='result'">
-    <button class="btn btn-primary" (click)="onSubmit();">Submit Quiz</button>
+    <button class="btn btn-primary" (click)="onSubmit();">Submit Answer</button>
   </div>
   <div *ngIf="mode=='result'">
-    <span>Correct answers:{{correct}}</span>
-    <span>Wrong answers: {{wrong}}</span>
-    <span>Total Marks:{{totalMarks}}</span>
+    <div class="mt-2 text-success">Correct answers: {{correct}}</div>
+    <div class="mt-2 text-danger">Wrong answers: {{wrong}}</div>
+    <div class="mt-2 text-info">Total Marks: {{totalMarks}}</div>
   </div>
 </div>

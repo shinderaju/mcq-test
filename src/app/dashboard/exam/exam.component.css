@@ -4,3 +4,8 @@
 .wrong {
   background-color:#EF473A;
 }
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 200px 0 0;
+}
