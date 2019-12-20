@@ -1,0 +1,23 @@
+<div class="container">
+  <form class="needs-validation" [formGroup]="frmSignup" (ngSubmit)="submit()" novalidate>
+    <app-custom-erro [label]="'Name'" [validations]="{required:'Name is required'}">
+      <input appInputref class="form-control" formControlName="name" type="text" />
+    </app-custom-erro>
+    <app-custom-erro [label]="'Email'" [validations]="{required:'Email is required', email: 'Enter a valid email address!'}">
+      <input appInputref class="form-control" formControlName="email" type="text" />
+    </app-custom-erro>
+    <app-custom-erro [label]="'Password'" [validations]="{required:'Password is required',
+    hasNumber: 'Must contain at least 1 number!',
+    hasCapitalCase : 'Must contain at least 1 in Capital Case!',
+    hasSmallCase : 'Must contain at least 1 Letter in Small Case!' ,
+    hasSpecialCharacters : 'Must contain at least 1 Special Character!'}">
+      <input appInputref class="form-control" formControlName="password" type="password" />
+    </app-custom-erro>
+    <app-custom-erro [label]="'Confirm password'" [validations]="{required:'Please confirm password', NoPassswordMatch : 'Password do not match'}">
+      <input appInputref class="form-control" formControlName="confirmPassword" type="password" />
+    </app-custom-erro>
+    <div>
+      <button [disabled]="frmSignup.invalid" type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+  <form class="needs-validation" [formGroup]="detailForm" novalidate (ngSubmit)="submit()">
+    <app-custom-erro [label]="'Email'" [validations]="{required:'Email is required',email:'Enter a valid email address!'}">
+      <input appInputref class="form-control" formControlName="email" type="text" />
+    </app-custom-erro>
+    <app-custom-erro [label]="'Password'" [validations]="{required:'Password is required'}">
+      <input appInputref class="form-control" formControlName="password" type="password" />
+    </app-custom-erro>
+    <app-custom-erro [label]="'Login As'">
+      Student <input appInputref class="form-control" formControlName="loginAs" type="radio" value="student"/>
+      Admin <input appInputref class="form-control" formControlName="loginAs" type="radio" value="Admin" />
+    </app-custom-erro>
+    <div>
+      <button [disabled]="detailForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
