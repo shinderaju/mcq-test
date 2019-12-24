@@ -5,7 +5,7 @@ import { RigisterComponent } from './rigister/rigister.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 
-const routes: Routes = [{ path: '', component: LoginComponent}, { path: 'register', component: RigisterComponent}];
+const routes: Routes = [{ path: 'login', component: LoginComponent}, { path: 'register', component: RigisterComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes), ReactiveFormsModule, SharedModule],

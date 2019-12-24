@@ -11,7 +11,7 @@ import {RoleGuardService} from '../shared/services/role-guard.service';
 
 const routes: Routes = [
   { path: '', component: ExamComponent, canActivate: [AuthGuardService] },
-  { path: 'admin', component: AdminComponent, canActivate: [RoleGuardService], data: {expectedRole: 'admin'} }
+  { path: 'admin', component: AdminComponent, canActivate: [RoleGuardService], data: {expectedRole: 'Admin'} }
   ];
 @NgModule({
   imports: [RouterModule.forChild(routes), ReactiveFormsModule, SharedModule, CommonModule, FormsModule],

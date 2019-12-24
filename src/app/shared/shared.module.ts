@@ -1,5 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { LocalstorageService } from './services/localstorage.service';
 import { AuthenticationService } from './services/authentication.service';
 import { InputrefDirective } from './directives/inputref.directive';
@@ -14,7 +15,8 @@ const SharedPipes = [];
 const SharedDirectives = [InputrefDirective];
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   exports: [
     ...SharedComponents,

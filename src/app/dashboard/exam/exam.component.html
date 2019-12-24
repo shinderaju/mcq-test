@@ -1,11 +1,11 @@
 <div class="container">
   <ul>
       <li class="mb-4" *ngFor="let question of questionArray; let questionIndex = index">
-        <h4 class="font-weight-bold">{{( questionIndex + 1) + ". " + question.text}}</h4>
+        <h4 class="font-weight-bold">{{( questionIndex + 1) + ". " + question.question}}</h4>
         <p>
           <label class="font-weight-normal mr-4" *ngFor="let option of question.options;let optionIndex = index"
                  [attr.for]="option"
-                 [ngClass]="{'text-success' : (optionIndex == question.ans && mode=='result'), 'text-danger': (optionIndex == question.userAns && optionIndex != question.ans && mode=='result')}">
+                 [ngClass]="{'text-success' : (optionIndex == question.ans && mode=='result'), 'text-danger': (optionIndex == userAns[optionIndex] && optionIndex != question.ans && mode=='result')}">
               <input id="question{{questionIndex}}{{option}}" name="question{{questionIndex}}" type="radio" (click)="onSelectionChange(questionIndex, optionIndex, $event);" /> {{option}}
           </label>
         </p>
@@ -18,5 +18,6 @@
     <div class="mt-2 text-success">Correct answers: {{correct}}</div>
     <div class="mt-2 text-danger">Wrong answers: {{wrong}}</div>
     <div class="mt-2 text-info">Total Marks: {{totalMarks}}</div>
+    <div class="mt-2 text-info">Obtained Marks: {{obtainedMarks}}</div>
   </div>
 </div>

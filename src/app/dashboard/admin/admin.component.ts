@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ServercallService} from '../../shared/services/servercall.service';
 
 @Component({
   selector: 'app-admin',
@@ -9,62 +10,23 @@ export class AdminComponent implements OnInit {
   user = {
     name : 'Raju Shinde',
     email : 'shinderaju08@gmail.com',
-    test : [{
+    userTest : [{
       testId : '12345',
-      marks : '20',
-      total : '100'
+      obtainedMarks : '20',
+      totalMarks : '100'
     }]
   };
-  users = [
-    {
-      name : 'Raju Shinde',
-      email : 'shinderaju08@gmail.com',
-      test : [{
-        testId : '12345',
-        marks : '20',
-        total : '100'
-      }]
-    },
-    {
-      name : 'Raju Shinde',
-      email : 'shinderaju08@gmail.com',
-      test : [{
-        testId : '12345',
-        marks : '20',
-        total : '100'
-      }]
-    },
-    {
-      name : 'Raju Shinde',
-      email : 'shinderaju08@gmail.com',
-      test : [{
-        testId : '12345',
-        marks : '20',
-        total : '100'
-      }]
-    },
-    {
-      name : 'Raju Shinde',
-      email : 'shinderaju08@gmail.com',
-      test : [{
-        testId : '12345',
-        marks : '20',
-        total : '100'
-      }]
-    },
-    {
-      name : 'Raju Shinde',
-      email : 'shinderaju08@gmail.com',
-      test : [{
-        testId : '12345',
-        marks : '20',
-        total : '100'
-      }]
-    }
-  ];
-  constructor() { }
+  users;
+  constructor(private servercallService: ServercallService) { }
 
   ngOnInit() {
+    this.getAllCanditates();
   }
+  getAllCanditates() {
+    this.servercallService.getAllCanditates().subscribe((allCandidates) => {
+this.users = allCandidates;
+    });
+  }
+
 
 }

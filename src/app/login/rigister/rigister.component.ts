@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from './../../shared/classes/custom-validators';
+import {ServercallService} from '../../shared/services/servercall.service';
+import {Router} from '@angular/router';
+import { LocalstorageService } from '../../shared/services/localstorage.service';
 @Component({
   selector: 'app-rigister',
   templateUrl: './rigister.component.html',
@@ -13,7 +16,9 @@ export class RigisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private servercallService: ServercallService,
+              private router: Router,
+              private localstorageService: LocalstorageService) {
     this.frmSignup = this.createSignupForm();
   }
 
@@ -54,7 +59,10 @@ export class RigisterComponent implements OnInit {
             Validators.minLength(8)
           ])
         ],
-        confirmPassword: [null, Validators.compose([Validators.required])]
+        confirmPassword: [null, Validators.compose([Validators.required])],
+        role: [ 'student',
+          Validators.compose([Validators.required])
+        ]
       },
       {
         // check whether our password and confirm password match
@@ -66,6 +74,13 @@ export class RigisterComponent implements OnInit {
   submit() {
     // do signup or something
     console.log(this.frmSignup.value);
+    if (this.frmSignup.valid) {
+      this.servercallService.register(this.frmSignup.value).subscribe((data) => {
+        console.log('data', data);
+        this.localstorageService.setItem('token', data['token']);
+        this.router.navigate(['dashboard/admin']);
+      });
+    }
   }
 
 }

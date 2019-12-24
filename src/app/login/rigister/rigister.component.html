@@ -10,11 +10,22 @@
     hasNumber: 'Must contain at least 1 number!',
     hasCapitalCase : 'Must contain at least 1 in Capital Case!',
     hasSmallCase : 'Must contain at least 1 Letter in Small Case!' ,
-    hasSpecialCharacters : 'Must contain at least 1 Special Character!'}">
+    hasSpecialCharacters : 'Must contain at least 1 Special Character!',
+    minlength : 'password must be of atleast 8 digit!'}">
       <input appInputref class="form-control" formControlName="password" type="password" />
     </app-custom-erro>
     <app-custom-erro [label]="'Confirm password'" [validations]="{required:'Please confirm password', NoPassswordMatch : 'Password do not match'}">
       <input appInputref class="form-control" formControlName="confirmPassword" type="password" />
+    </app-custom-erro>
+    <app-custom-erro [label]="'Registered as'">
+      <div class="form-check form-check-inline">
+        <label class="form-check-label pr-2" for="inlineCheckbox1">Student</label>
+        <input appInputref class="form-check-input" formControlName="role" type="radio" id="inlineCheckbox1" value="student">
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label pr-2" for="inlineCheckbox2">Admin</label>
+        <input appInputref class="form-check-input" formControlName="role" type="radio" id="inlineCheckbox2" value="Admin">
+      </div>
     </app-custom-erro>
     <div>
       <button [disabled]="frmSignup.invalid" type="submit" class="btn btn-primary">Submit</button>
